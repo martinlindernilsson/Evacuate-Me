@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import PromptPage from './views/PromtPage.vue'
-import Weather from './views/Weather.vue'
+import Climate from './views/Climate.vue'
 
 Vue.use(Router)
 
@@ -27,7 +27,7 @@ export default new Router({
       component: PromptPage,
       children: [
         // Weather will be rendered inside PromtPage's <router-view>
-        { path: '/weather', component: Weather },
+        { path: '/climate', component: Climate },
   ]
   }
 ]
