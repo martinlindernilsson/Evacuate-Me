@@ -7,21 +7,6 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/recommended",
-      "eslint:recommended",
-      "plugin:prettier/recommended",
-      "prettier/vue"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
   "dependencies": {
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
@@ -45,8 +30,10 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
+      "plugin:vue/recommended",
+      "eslint:recommended",
+      "prettier/vue"
+
     ],
     "rules": {},
     "parserOptions": {
