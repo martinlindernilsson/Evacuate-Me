@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Start from './views/Start.vue'
 import PromptPage from './views/PromptPage.vue'
 import Climate from './views/Climate.vue'
 
@@ -10,8 +10,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home
+      name: 'start',
+      component: Start
     },
     {
       path: '/about',

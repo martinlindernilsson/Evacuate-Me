@@ -9,12 +9,19 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono');
+body{
+    background-color:#1e2326;
+
+}
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Mono', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   margin-top: 60px;
+
 }
 </style>
