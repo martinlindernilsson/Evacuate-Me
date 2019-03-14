@@ -2,11 +2,12 @@
   <v-container>
     <v-stepper class="status-bar" non-linear dark alt-labels>
       <v-stepper-header>
+
         <v-stepper-step
           color="#c91e00"
           editable
           step="1"
-          @click="$router.push({name: 'createavatar'})"
+          @click="$router.push({path: '/createavatar'})"
         >Avatar</v-stepper-step>
 
         <v-divider></v-divider>
