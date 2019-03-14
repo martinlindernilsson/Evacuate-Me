@@ -9,16 +9,16 @@
 //import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
-  name: "Start",
+  name: "Start"
 };
 </script>
 <style scoped>
-.evacuate-button{
-  font-family: 'Roboto Mono', monospace;
+.evacuate-button {
+  font-family: "Roboto Mono", monospace;
   font-size: 2em;
   letter-spacing: 3px;
   color: #fff;
-  background-color:#c91e00;
+  background-color: #c91e00;
   height: 300px;
   width: 300px;
   border: none;
