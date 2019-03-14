@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Start from './views/Start.vue'
 import PromptPage from './views/PromptPage.vue'
 import Climate from './views/Climate.vue'
+import CreateAvatar from './views/CreateAvatar.vue'
 
 Vue.use(Router)
 
@@ -12,6 +13,11 @@ export default new Router({
       path: '/',
       name: 'start',
       component: Start
+    },
+    {
+      path: '/createavatar',
+      name: 'createavatar',
+      component: CreateAvatar
     },
     {
       path: '/about',
