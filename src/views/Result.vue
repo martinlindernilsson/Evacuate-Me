@@ -6,7 +6,10 @@
 
 <script>
 export default {
-    name: "Result"
+  name: "Result",
+  mounted: function() {
+    this.$store.state.currentStep = 5;
+  }
 };
 </script>
 
