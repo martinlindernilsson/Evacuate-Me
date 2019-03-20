@@ -50,6 +50,10 @@ body {
   z-index: -100;
 }
 
+.nextButton {
+  margin: 5%;
+}
+
 #app {
   font-family: "Roboto Mono", monospace;
   -webkit-font-smoothing: antialiased;
