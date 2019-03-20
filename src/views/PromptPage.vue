@@ -1,6 +1,7 @@
 <template>
   <div>
     <StatusBar/>
+    <router-view></router-view>
   </div>
 </template>
 

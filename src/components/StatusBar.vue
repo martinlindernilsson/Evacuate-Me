@@ -1,16 +1,17 @@
 <template>
   <v-container fluid>
-    <v-stepper class="status-bar" non-linear dark alt-labels>
+    <v-stepper v-model="currentStep" class="status-bar" dark alt-labels>
       <v-stepper-header>
-        <template v-for="n in steps">
+        <template v-for="n in stepName.length">
           <v-stepper-step
             :key="`${n}-step`"
             color="#c91e00"
-            editable
+            :editable="n < currentStep"
+            :complete="n < currentStep"
             :step="n"
-            @click="$router.push(paths[n-1])"
+            @click="stepClicked(n)"
           >{{stepName[n-1]}}</v-stepper-step>
-          <template v-if="n != steps">
+          <template v-if="n != stepName.length">
             <v-divider :key="`${n}-divider`"></v-divider>
           </template>
         </template>
@@ -22,10 +23,19 @@
 <script>
 export default {
   data: () => ({
-    steps: 5,
-    stepName: ["Climate", "Neighbours", "Gravity", "Time", "Fly away"],
-    paths: ["/prompt", "/", "/", "/", "/"]
-  })
+    currentStep: 5,
+    stepName: ["Climate", "Population", "Gravity", "Time", "Fly away"],
+    paths: ["/climate", "/population", "/gravity", "/time", "/result"]
+  }),
+  methods: {
+    stepClicked: function(stepNr) {
+      if (stepNr <= this.currentStep) {
+        this.currentStep = stepNr
+        this.$router.push(this.paths[stepNr-1])
+
+      }
+    }
+  }
 };
 </script>
 
