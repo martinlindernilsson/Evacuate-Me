@@ -27,6 +27,13 @@ All data about the planets will be fetched from the SWAPI database and filtered 
 
 # Project file structure 
 
+The start page give you a introduction as well as a instructions on how you get the game started, you will go forward by pressing the "Evacuate me"-button
+
+Next page is the Create-avatar file where we will collect data about each user, they will also later on get the oppurtunity to create their own avatar by choosing between different hair/skin/eye colors and different facial features.
+
+The next page (Climate.vue) is where the questions start and you will make your first decisition which is about the climate. Here we fetch the different choices from the SWAPI API.
+
+After that you will choose how populated you want your planet to be by dragging a slider(Population.vue). And after that you will choose how much gravity you would want on your planet, also by dragging a slider(Gravity.vue). Lastely you will choose about how time will be precieved(Time.vue). You will end up on the result page where you will get all your choices presented for you and the planet you recieved(Result.vue).
 
 ## Project setup
 ```
