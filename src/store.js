@@ -11,6 +11,7 @@ export default new Vuex.Store({
     planets: []
   },
   getters: {
+    //TODO get all unique climates, separate those with combinations
     planetClimates(state) {
       return state.planets.reduce((acc, planet) => {
         if (!acc.includes(planet.climate)) {
