@@ -8,7 +8,7 @@
 <script>
 export default {
   name: "Planet",
-  props: ["data"],
+  props: ["data"], //TODO use state instead
   data: () => ({
     climates: { tropical: "orange", frozen: "blue", jungles: "green" }
   }),
