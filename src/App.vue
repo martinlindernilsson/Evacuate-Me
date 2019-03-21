@@ -23,10 +23,6 @@ body {
   margin: 5%;
 }
 
-.nextButton {
-  margin: 5%;
-}
-
 #app {
   height: 100vh;
   width: 100vw;
@@ -35,6 +31,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
+  padding-top: 5%;
 }
 .router-view {
   width: 100vw;
