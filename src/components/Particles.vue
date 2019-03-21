@@ -6,13 +6,16 @@
 require("particles.js");
 export default {
   name: "Particles",
+  mounted() {
+    this.initParticles()
+  },
   methods: {
     initParticles() {
       /*eslint-disable */
       particlesJS("particles-js", {
         particles: {
           number: {
-            value: 80,
+            value: 350,
             density: {
               enable: true,
               value_area: 700
@@ -37,8 +40,8 @@ export default {
             }
           },
           opacity: {
-            value: 0.8,
-            random: false,
+            value: 1,
+            random: true,
             anim: {
               enable: false,
               speed: 1,
@@ -47,7 +50,7 @@ export default {
             }
           },
           size: {
-            value: 0.5,
+            value: 0.8,
             random: true,
             anim: {
               enable: true,
@@ -58,10 +61,6 @@ export default {
           },
           line_linked: {
             enable: false,
-            distance: 150,
-            color: "#ffffff",
-            opacity: 0.4,
-            width: 1
           },
           move: {
             enable: true,
