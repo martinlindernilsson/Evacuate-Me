@@ -10,6 +10,7 @@
   "dependencies": {
     "particles.js": "^2.0.0",
     "vue": "^2.6.6",
+    "vue-circle-slider": "^1.0.2",
     "vue-router": "^3.0.1",
     "vuetify": "^1.5.6",
     "vuex": "^3.0.1"
