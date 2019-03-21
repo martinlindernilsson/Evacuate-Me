@@ -2,11 +2,10 @@
 <template>
   <div>
     <div class="infotext">Choose the climate you would like on your new planet</div>
-    <div v-for="c in climate" :key="c" class="planets">
-      {{c}}
-      <Planet :data="c"/>
+    <div v-for="climate in $store.getters.planetClimates" :key="climate" class="climate-list">
+      {{climate}}
+      <Planet :data="climate"/>
     </div>
-
     <v-btn class="nextButton" @click="$router.push('/population')">Next</v-btn>
   </div>
 </template>
@@ -18,18 +17,16 @@ export default {
   components: {
     Planet
   },
-  data: () => ({
-    climate: ["tropical", "frozen", "jungles" ],
-  }),
-  mounted: function() {
+  mounted() {
     this.$store.state.currentStep = 1;
+    this.$store.dispatch('fetchSwapi');
   }
 };
 </script>
 
 
 <style scoped>
-.planets {
+.climate-list {
   display: inline-block;
   margin: 5%;
 }
