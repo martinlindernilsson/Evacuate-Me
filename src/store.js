@@ -3,7 +3,7 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-const url = "https://swapi.co/api/planets/";
+const url = "https://swapi.co/api/planets/?page=";
 
 export default new Vuex.Store({
   state: {
@@ -27,14 +27,24 @@ export default new Vuex.Store({
   },
   actions: {
     fetchSwapi(store) {
-      return fetch(url, {
-        method: "GET"
-      })
-        .then(response => response.json())
-        .then(data => {
-          store.commit("setPlanets", data.results);
+      const pages = ['1','2','3','4','5','6','7'];
+      let planetsArr = [];
+      pages.forEach(function(item){
+        const pageurl = url+item;
+        return fetch(pageurl, {
+          method: "GET"
         })
-        .catch(error => alert(error));
+          .then(response => response.json())
+          .then(data => {
+            data.results.forEach(function(item){
+              planetsArr.push(item)
+            })
+          })
+          .catch(error => alert(error));
+          
+      })
+      store.commit("setPlanets", planetsArr);
+
     }
   }
 });
