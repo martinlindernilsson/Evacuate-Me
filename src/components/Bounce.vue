@@ -31,9 +31,8 @@ export default {
 
 #shadow {
   position: relative;
-  
-  top: 15.2em;
-  left: 50%;
+  top: 210px;  
+  left: 22px;
   margin-left: -1em;
   width: 2em;
   height: 1em;
@@ -74,9 +73,7 @@ export default {
 #ball {
   position: relative;
   background: #c91e00;
-  top: 3em;
-  width: 3em;
-  height: 3em;
+  top: 100px;
   border-radius: 50%;
   margin: 0 auto;
   z-index: 2;

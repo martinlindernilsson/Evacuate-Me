@@ -18,7 +18,7 @@ export default {
     Planet
   },
   mounted() {
-    this.$store.state.currentStep = 1;
+    this.$store.state.currentStep = 1; //TODO use getters instead
     this.$store.dispatch('fetchSwapi');
   }
 };
