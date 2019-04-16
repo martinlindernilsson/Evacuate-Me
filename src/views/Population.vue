@@ -1,29 +1,38 @@
 <template>
   <div>
-    <div class="infotext">Här väljs population...</div>
-    <v-app id="inspire">
+    <div class="infotext">
+      <h2>Neighbours</h2>
+      Are you a social person or a lone wolf?
+    </div>
+    <v-app id="population">
       <v-container grid-list-lg>
         <v-layout row wrap>
           <v-flex>
             <v-slider
               v-model="slider"
-              :max="160"
-              :min="20"
-              :step="10"
-              :color="ex1.color"
-              :track-color="ex2.color"
-              :thumb-color="ex3.color"
+              max="140"
+              min="1"
+              step="1"
+              color="#c91e00"
+              track-color="#FFFFFF"
+              thumb-color="#c91e00"
             ></v-slider>
           </v-flex>
         </v-layout>
-        <div class="planetAndButton-fluid">
-          <v-btn class="nextButton" @click="$router.push('/gravity')">Next</v-btn>
-          <div id="circle"></div>
-          <svg height="100%" width="100%" @click="$router.push('/gravity')">
-            <circle cx="50%" cy="50%" r="160" fill="green"></circle>
-            <circle  cx="50%" cy="50%" :r="slider" fill="blue">Next</circle>
-          </svg>
-        </div>
+        <v-layout row wrap>
+          <v-flex>
+            <div class="planet">
+               <div class="circle"></div>
+              <div id="people">
+                <div v-for="people in slider" :key="people.id" class="peopleIcon">
+                  <i class="fas fa-user"></i>
+                </div>
+              </div>
+            </div>
+          </v-flex>
+        </v-layout>
+
+        <v-btn class="nextButton" @click="$router.push('/gravity')">Next</v-btn>
       </v-container>
     </v-app>
   </div>
@@ -34,73 +43,53 @@ export default {
   name: "Population",
   data() {
     return {
-      slider: 50,
-      ex1: { label: "color", val: 25, color: "#c91e00" },
-      ex2: { label: "track-color", val: 75, color: "#FFFFFF" },
-      ex3: { label: "thumb-color", val: 50, color: "#c91e00" }
+      slider: 2,
     };
   },
   mounted: function() {
     this.$store.state.currentStep = 2;
-    this.starGenerator();
   },
-  methods: {
-    starGenerator() {
-      // https://dev.to/christopherkade/developing-the-star-wars-opening-crawl-in-htmlcss-2j9e
-      // Sets the amount of stars to generate
-      const people = "100";
-
-      // Function that generates random x, y values based on container size
-      function getRandomPosition() {
-        var cont = document.getElementById("circle")
-        var y = cont.offsetWidth;
-        var x = cont.offsetHeight;
-        var randomX = Math.floor(Math.random() * x);
-        var randomY = Math.floor(Math.random() * y);
-        return [randomX, randomY];
-      }
-      var cont = document.getElementById("circle")
-      for (let i = 0; i < people; i++) {
-        let person = document.createElement("div");
-        person.className = "person";
-        var xy = getRandomPosition();
-        person.style.top = xy[0] + "px";
-        person.style.left = xy[1] + "px";
-        
-        cont.append(person);
-      }
-
-      
-    }
-  }
+  methods: {}
 };
 </script>
 
 
 <style scoped>
-#inspire {
-  display: flex;
+#population {
+  display: block;
   justify-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
   background: transparent;
   color: white !important;
 }
 
-.planetAndButton-fluid {
-  height: 60%;
+.planet {
+  display: flex;
+  justify-content: center;
+  width:100%
 }
 
-.person{
-  background: blue;
-  color:plum;
-  width:10px;
-  height: 10px;
-}
-#circle{
-  border-radius: 50%;
+.circle {
+  background-color: green;
   width: 300px;
   height:300px;
+  border-radius: 50%;
+  box-shadow: 0 0 30px #ad8766;
 }
 
+.peopleIcon {
+  display: inline-block;
+  width: 15px;
+}
+
+#people {
+  display: block;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  z-index: 1;
+  top:23%;
+}
 </style>
