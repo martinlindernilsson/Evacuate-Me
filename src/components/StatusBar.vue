@@ -39,7 +39,7 @@ export default {
 
 <style>
 .status-bar {
-  background-color: #1e2326 !important;
+  background-color: transparent !important;
   box-shadow: none;
 }
 </style>
