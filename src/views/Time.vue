@@ -2,6 +2,7 @@
   <div class="time">
     <div class="infotext">Time is relative...</div>
     <div class="content">
+      <v-app id="inspire">
         <v-container>
           <v-subheader class="header">Days a year</v-subheader>
           <v-layout row wrap>
@@ -37,6 +38,7 @@
             </v-flex>
           </v-layout>
         </v-container>
+      </v-app>
       
       <!-- https://codepen.io/willpaige/pen/ImjGq -->
       <div class="planet-container">
