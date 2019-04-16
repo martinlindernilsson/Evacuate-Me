@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <Particles/>
+    <!--<Particles/>-->
     <router-view/>
   </div>
 </template>
 <script>
-import Particles from "@/components/Particles.vue";
+//import Particles from "@/components/Particles.vue";
 export default {
   components: {
-    Particles
+    //Particles
   }
 };
 </script>
