@@ -2,10 +2,10 @@
 <template>
   <div>
     <div class="infotext">Choose the climate you would like on your new planet</div>
-    <div v-for="option in climateOptions.options" :key="option" class="climate-list">
-      {{option.name}}
-      <div class="choose-planet" @click="chooseClimate(option)">
-        <Planet :data="option" /> <!-- TODO don't pass data props -->
+    <div v-for="option in Object.keys(climates)" :key="option" class="climate-list">
+      {{option}}
+      <div class="choose-planet" @click="() => {chooseClimate(option)}">
+        <Planet /> <!-- TODO don't pass data props -->
       </div>
     </div>
     <v-btn class="nextButton" @click="$router.push('/population')">Next</v-btn>
@@ -14,14 +14,16 @@
 
 <script>
 import Planet from "../components/Planet";
+import climates from "../utils/climateMapping";
+
 export default {
   name: "Climate",
   components: {
     Planet
   },
-  computed: {
-    climateOptions() {
-      return this.$store.getters.climateOptions;
+  data(){
+    return{
+      climates
     }
   },
   mounted() {

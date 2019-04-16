@@ -1,27 +1,41 @@
 import Vue from "vue";
 import Vuex from "vuex";
+//import climateMapping from "./utils/climateMapping";
 
 Vue.use(Vuex);
+
+const climateMapping = {
+  "steamy":["hot", "tropical"],
+  "extreme": ["superheated", "polluted", "unknown"],
+  "varying": ["temperate"],
+  "chilly": ["artic", "windy", "subartic"]
+}
 
 const url = "https://swapi.co/api/planets/?page=";
 
 export default new Vuex.Store({
   state: {
     currentStep: 1,
-    planets: [],
-    climateOptions: {
-      options: {
-        option: { name: "steamy", search: ["hot", "tropical"], planets: [] },
-        option: { name: "extreme", search: ["superheated", "polluted"], planets: [] },
-        option: { name: "varying", search: ["temperate"], planets: [] },
-        option: { name: "chilly", search: ["artic", "windy", "subartic"],  planets: [] }
-      }
-    },
-    chosenPlanets: []
+    planets: [], // all planets fetched from API
+    chosenClimate: null,
+    chosenPopulation: null
   },
   getters: {
-    climateOptions(state) {
-      return state.climateOptions;
+    // använd array.filter().filter().filter().filter()
+    filteredPlanets(state) {
+      return state.planets.filter(planet => {
+        if (state.chosenClimate) {
+          let exists = false;
+          climateMapping[state.chosenClimate].forEach((search) => {
+            if (planet.climate.includes(search)) {
+              exists = true;
+            }
+          });
+          return exists;
+        } else {
+          return true;
+        }
+      }); // add .filter() for population aso here
     }
   },
   mutations: {
@@ -29,13 +43,7 @@ export default new Vuex.Store({
       state.planets = planets;
     },
     setChosenClimate: (state, payload) => {
-      let chosenPlanetsList = [];
-      state.planets.forEach(function(planet) {
-        if (planet.climate.includes(JSON.stringify(payload))) {
-          chosenPlanetsList.push(planet);
-        }
-      });
-      state.chosenPlanets = chosenPlanetsList;
+      state.chosenClimate = payload;
     }
   },
   actions: {
