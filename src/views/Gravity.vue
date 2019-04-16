@@ -20,21 +20,21 @@
             ></v-slider>
           </v-flex>
         </v-layout>
-        <v-layout justify-center>
-          <v-flex>
+        
+        <v-layout class="ball-planet" justify-center>
+          <v-flex class="ball" justify-center>
             <Bounce/>
           </v-flex>
-        </v-layout>
-
-        <v-layout>
-          <v-flex>
+       
+          <v-flex xs2 class="circle-div" justify-center>
             <div class="circle"></div>
           </v-flex>
         </v-layout>
-
+        
         <v-layout justify-center>
           <v-btn class="nextButton" @click="$router.push('/time')">Next</v-btn>
         </v-layout>
+        
       </v-container>
     </v-app>
   </div>
@@ -61,24 +61,40 @@ export default {
 .app {
   background: transparent;
 }
+
 .infotext {
-  
   color: #c91e00;
-  font-size: 18pt;
-  
+  font-size: 16pt;
 }
 
 .nextButton {
   position: absolute;
   top: 45em;
+
+}
+.ball-planet {
+  position: absolute;
+  top: 60%;
+  left: 40%;
+}
+
+.ball {
+  position: absolute;
+  bottom: 180px;
+  left: 56px;
+  
+}
+
+.circle-div {
+  
+  
 }
 
 .circle {
   display: inline-block;
   position: absolute;
   z-index: -1;
-  top: 33em;
-  left: 44.6%;
+  
   border-radius: 50%;
   height: 160px;
   width: 160px;
