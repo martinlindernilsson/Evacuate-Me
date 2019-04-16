@@ -2,9 +2,11 @@
 <template>
   <div>
     <div class="infotext">Choose the climate you would like on your new planet</div>
-    <div v-for="climate in $store.getters.planetClimates" :key="climate" class="climate-list">
-      {{climate}}
-      <Planet :data="climate"/>
+    <div v-for="option in climateOptions.options" :key="option" class="climate-list">
+      {{option.name}}
+      <div class="choose-planet" @click="chooseClimate(option)">
+        <Planet :data="option" /> <!-- TODO don't pass data props -->
+      </div>
     </div>
     <v-btn class="nextButton" @click="$router.push('/population')">Next</v-btn>
   </div>
@@ -17,9 +19,19 @@ export default {
   components: {
     Planet
   },
+  computed: {
+    climateOptions() {
+      return this.$store.getters.climateOptions;
+    }
+  },
   mounted() {
     this.$store.state.currentStep = 1; //TODO use getters instead
-    this.$store.dispatch('fetchSwapi');
+    this.$store.dispatch("fetchSwapi");
+  },
+  methods: {
+    chooseClimate: function(option) {
+      this.$store.commit("setChosenClimate", option);
+    }
   }
 };
 </script>
