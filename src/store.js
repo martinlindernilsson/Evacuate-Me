@@ -19,7 +19,9 @@ export default new Vuex.Store({
     planets: [], // all planets fetched from API
     chosenClimate: null, // chosenClimate is used with climateMapping to filter planets
     chosenPopulation: null, //value 1-130
-    chosenGravity: null //value 1-100
+    chosenGravity: null, //value 1-100
+    chosenDays:null, //value 150-1770
+    chosenHours: null, //12-40
   },
   getters: {
     // använd array.filter().filter().filter().filter()
@@ -69,6 +71,12 @@ export default new Vuex.Store({
     },
     setChosenGravity: (state, gravity) => {
       state.chosenGravity = gravity;
+    },
+    setChosenOrbitalPeriod : (state, days) => {
+      state.chosenDays = days;
+    },
+    setChosenRotationPeriod : (state, hours) => {
+      state.chosenHours= hours;
     }
   },
   actions: {
