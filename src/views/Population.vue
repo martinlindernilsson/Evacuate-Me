@@ -11,11 +11,11 @@
               v-model="slider"
               max="130"
               min="1"    
-              @click="setPopulation"
               step="1"
               color="#c91e00"
               track-color="#FFFFFF"
               thumb-color="#c91e00"
+              @click="setPopulation"
             ></v-slider>
           </v-flex>
         </v-layout>
