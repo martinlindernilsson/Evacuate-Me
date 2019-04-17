@@ -49,6 +49,9 @@ export default new Vuex.Store({
     },
     setChosenClimate: (state, payload) => {
       state.chosenClimate = payload;
+    },
+    setChosenPopulation : (state, population) => {
+      state.chosenPopulation = population;
     }
   },
   actions: {
