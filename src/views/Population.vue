@@ -10,7 +10,7 @@
           <v-flex>
             <v-slider
               v-model="slider"
-              max="140"
+              max="130"
               min="1"
               step="1"
               color="#c91e00"
