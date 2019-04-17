@@ -35,7 +35,12 @@ export default new Vuex.Store({
         } else {
           return true;
         }
-      }); // add .filter() for population aso here
+      })//.filter(filteredPlanets => {
+        //if (state.chosen){
+          //let exists = false;
+
+        //}
+      //}) // add .filter() for population aso here
     }
   },
   mutations: {

@@ -1,25 +1,56 @@
 <template>
-  <div>
+  <div class="time">
     <div class="infotext">Time is relative...</div>
-    <div class="sliderValue">Hours in a day {{sliderValue}}</div>
-
-    <figure class="sphere" :style="{'-webkit-animation-duration': sliderValue/20 + 's'}"></figure>
-
-    <circle-slider
-      v-model="sliderValue"
-      class="circleSlider"
-      :side="150"
-      :min="12"
-      :max="36"
-      :step-size="1"
-      :circle-width-rel="20"
-      :progress-width-rel="10"
-      :knob-radius="10"
-      :progress-color="null"
-      :knob-color="changeColor()"
-      :circle-color="changeColor()"
-    ></circle-slider>
-
+    <div class="content">
+      <v-app id="inspire">
+        <v-container>
+          <v-subheader class="header">Days a year</v-subheader>
+          <v-layout row wrap>
+            <v-flex>
+              <v-slider
+                v-model="DaySlider"
+                ticks="always"
+                tick-size="3"
+                :max="10"
+                :min="1"
+                :step="1"
+                :color="ex1.color"
+                :track-color="ex2.color"
+                :thumb-color="ex3.color"
+                
+              ></v-slider>
+            </v-flex>
+          </v-layout>
+          <v-subheader class="header">Hours a day</v-subheader>
+          <v-layout row wrap>
+            <v-flex>
+              <v-slider
+                v-model="HourSlider"
+                ticks="always"
+                tick-size="3"
+                :max="10"
+                :min="1"
+                :step="1"
+                :color="ex1.color"
+                :track-color="ex2.color"
+                :thumb-color="ex3.color"
+              ></v-slider>
+            </v-flex>
+          </v-layout>
+        </v-container>
+      </v-app>
+      
+      <!-- https://codepen.io/willpaige/pen/ImjGq -->
+      <div class="planet-container">
+        <div :style="{ animationDuration: DaySlider + 's'}" class="planets sun">
+          <div class="one ring"></div>
+          <div :style="{ animationDuration: HourSlider + 's'}" class="planet">
+            <div class="ring"></div>
+            <div class="moon"></div>
+          </div>
+        </div>
+      </div>
+    </div>
     <v-btn class="nextButton" @click="$router.push('/result')">Done</v-btn>
   </div>
 </template>
@@ -29,53 +60,135 @@ export default {
   name: "Time",
   data() {
     return {
-      sliderValue: 24,
-      progressColor: "#00be7e",
-      days: 365
+      DaySlider: 5,
+      HourSlider: 5,
+      ex1: { label: "color", val: 25, color: "#c91e00" },
+      ex2: { label: "track-color", val: 75, color: "#FFFFFF" },
+      ex3: { label: "thumb-color", val: 50, color: "#c91e00" }
     };
   },
   mounted: function() {
     this.$store.state.currentStep = 4;
   },
-  methods: {
-    changeColor: function() {
-      if (this.sliderValue < 24) {
-        return "red";
-      } else if (this.sliderValue > 24) {
-        return "#00be7e";
-      } else {
-        return "#334860";
-      }
-    }
-  }
+  methods: {}
 };
 </script>
 
 
 <style scoped>
-.sliderValue {
-  margin-top: 4%;
+.content {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
 }
-.circleSlider {
-  display: inline;
+
+.container{
+  max-height:150px;
+  max-width:300px;
+  margin-top: 40px;
+  margin-bottom: 80px;
 }
-.sphere {
+#inspire {
+  display: flex;
+  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
+  background: transparent;
+  color: white !important;
+}
+.planets div {
   display: inline-block;
-  background: #f5a62f;
-  border-radius: 50%;
-  height: 200px;
-  width: 200px;
-  margin: 0;
-  animation: rotate 4s linear infinite;
-  background: radial-gradient(circle at 75px 75px, #f7b654b0 10%, #0a531a 40%);
-  transform-style: preserve-3d;
+  position: absolute;
 }
-@keyframes rotate {
-  0% {
-    background-position: 0 0;
+.header {
+  font-family: "Roboto Mono", monospace;
+  color: white;
+}
+.ring {
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  transform: rotate(0);
+  box-shadow: none;
+}
+.one {
+  width: 300px;
+  height: 300px;
+  border-radius: 200px;
+  left: -110px;
+  top: -110px;
+}
+.planet {
+  width: 52px;
+  height: 52px;
+  border-radius: 50px;
+  background: #ffacac;
+  top: 16px;
+  left: -132px;
+  transform-origin: 26px 26px;
+}
+.planet > .ring {
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  top: -35px;
+  left: -35px;
+}
+.planet-container {
+  position: relative;
+  width: 540px;
+  margin-top: 70px;
+  text-align: center;
+  height: 600px;
+}
+.sun {
+  width: 80px;
+  height: 80px;
+  border-radius: 80px;
+  top: 170px;
+  left: 240px;
+  display: inline-block;
+  position: absolute;
+  background: #f1da36;
+  box-shadow: 0 0 50px #f1da36, 0 0 20px #f2ad00, 0 0 5px #c96800,
+    0 0 70px #feff8f;
+  background: -webkit-gradient(
+    radial,
+    center center,
+    0px,
+    center center,
+    100%,
+    color-stop(0%, #fcf3a1),
+    color-stop(100%, #f1da36)
+  );
+}
+.sun {
+  animation-name: spin;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.planet {
+  animation-name: spin;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  box-shadow: 0 0 30px #e8bcbcc2;
+}
+.moon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background: #fff;
+  top: -30px;
+  left: -30px;
+  transform-origin: 15px 15px;
+  box-shadow: 0 0 20px #eeede5ec, 0 0 5px #bae6ebe3;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
   }
-  100% {
-    background-position: 400px 0;
+  to {
+    transform: rotate(360deg);
   }
 }
 </style>
