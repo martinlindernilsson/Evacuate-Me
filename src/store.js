@@ -56,6 +56,7 @@ export default new Vuex.Store({
     },
     setChosenGravity : (state, gravity) => {
       state.chosenGravity = gravity;
+    }
   },
   actions: {
     fetchSwapi(store) {
