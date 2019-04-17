@@ -1,15 +1,15 @@
 import Vue from "vue";
 import Vuex from "vuex";
-//import climateMapping from "./utils/climateMapping";
+import climateMapping from "./utils/climateMapping";
 
 Vue.use(Vuex);
 
-const climateMapping = {
-  "steamy":["hot", "tropical"],
-  "extreme": ["superheated", "polluted", "unknown"],
-  "varying": ["temperate"],
-  "chilly": ["artic", "windy", "subartic"]
-}
+// const climateMapping = {
+//   steamy: ["hot", "tropical"],
+//   extreme: ["superheated", "polluted", "unknown"],
+//   varying: ["temperate"],
+//   chilly: ["artic", "windy", "subartic"]
+// };
 
 const url = "https://swapi.co/api/planets/?page=";
 
@@ -17,31 +17,43 @@ export default new Vuex.Store({
   state: {
     currentStep: 1,
     planets: [], // all planets fetched from API
-    chosenClimate: null,
+    chosenClimate: null, // chosenClimate is used with climateMapping to filter planets
     chosenPopulation: null, //value 1-130
     chosenGravity: null //value 1-100
   },
   getters: {
     // använd array.filter().filter().filter().filter()
     filteredPlanets(state) {
-      return state.planets.filter(planet => {
-        if (state.chosenClimate) {
-          let exists = false;
-          climateMapping[state.chosenClimate].forEach((search) => {
-            if (planet.climate.includes(search)) {
-              exists = true;
+      return state.planets
+        .filter(planet => {
+          if (state.chosenClimate) {
+            let exists = false;
+            climateMapping[state.chosenClimate].forEach(search => {
+              if (planet.climate.includes(search)) {
+                exists = true;
+              }
+            });
+            return exists;
+          } else {
+            return true;
+          }
+        })
+        .filter(filteredPlanets => {
+          if (state.chosenPopulation) {
+            let exists = false;
+            if (state.chosenPopulation < 35) {
+              if (filteredPlanets.population < 1000) {
+                exists = true;
+              }
+              else {
+                if (filteredPlanets.population > 1000) {
+                  exists = true;
+                }
+              }
             }
-          });
-          return exists;
-        } else {
-          return true;
-        }
-      })//.filter(filteredPlanets => {
-        //if (state.chosen){
-          //let exists = false;
-
-        //}
-      //}) // add .filter() for population aso here
+            return exists;
+          }
+        }); // add .filter() for population aso here */
     }
   },
   mutations: {
@@ -51,10 +63,10 @@ export default new Vuex.Store({
     setChosenClimate: (state, payload) => {
       state.chosenClimate = payload;
     },
-    setChosenPopulation : (state, population) => {
+    setChosenPopulation: (state, population) => {
       state.chosenPopulation = population;
     },
-    setChosenGravity : (state, gravity) => {
+    setChosenGravity: (state, gravity) => {
       state.chosenGravity = gravity;
     }
   },
