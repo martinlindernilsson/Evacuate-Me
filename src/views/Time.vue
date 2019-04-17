@@ -2,25 +2,8 @@
   <div class="time">
     <div class="infotext">Time is relative...</div>
     <div class="content">
-      <v-app id="inspire">
+      <v-app id="slider">
         <v-container>
-          <v-subheader class="header">Days a year</v-subheader>
-          <v-layout row wrap>
-            <v-flex>
-              <v-slider
-                v-model="daySlider"
-                ticks="always"
-                tick-size="3"
-                :max="10"
-                :min="1"
-                :step="1"
-                :color="ex1.color"
-                :track-color="ex2.color"
-                :thumb-color="ex3.color"
-                @click="setDays()"
-              ></v-slider>
-            </v-flex>
-          </v-layout>
           <v-subheader class="header">Hours a day</v-subheader>
           <v-layout row wrap>
             <v-flex>
@@ -35,6 +18,23 @@
                 :track-color="ex2.color"
                 :thumb-color="ex3.color"
                 @click="setHours()"
+              ></v-slider>
+            </v-flex>
+          </v-layout>
+          <v-subheader class="header">Days a year</v-subheader>
+          <v-layout row wrap>
+            <v-flex>
+              <v-slider
+                v-model="daySlider"
+                ticks="always"
+                tick-size="3"
+                :max="10"
+                :min="1"
+                :step="1"
+                :color="ex1.color"
+                :track-color="ex2.color"
+                :thumb-color="ex3.color"
+                @click="setDays()"
               ></v-slider>
             </v-flex>
           </v-layout>
@@ -96,7 +96,7 @@ export default {
   margin-top: 40px;
   margin-bottom: 80px;
 }
-#inspire {
+#slider {
   display: flex;
   justify-content: center;
   margin-left: 10%;
