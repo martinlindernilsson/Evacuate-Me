@@ -4,6 +4,7 @@
     <div class="box-fluid">
       <div class="animation">
         <div class="planet" style="z-index: 1"></div>
+        <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
       </div>
       <div class="planet-result">
         <p>You will be evacuated to...</p>
