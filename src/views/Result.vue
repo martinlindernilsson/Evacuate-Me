@@ -2,9 +2,8 @@
   <div class="results">
     <div class="info-text">Här visas resultatet...</div>
     <div class="box-fluid">
-       <div class="animation">
+      <div class="animation">
         <div class="planet" style="z-index: 1"></div>
-        <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
       </div>
       <div class="planet-result">
         <p>You will be evacuated to...</p>
@@ -12,15 +11,17 @@
         <p class="population">population</p>
         <p class="Gravity">Gravity</p>
         <p class="Time">Time</p>
+        <Avatar/>
       </div>
-     
     </div>
   </div>
 </template>
 
 <script>
+import Avatar from "../components/Avatar";
 export default {
   name: "Result",
+  components: { Avatar },
   mounted: function() {
     this.$store.state.currentStep = 5;
   }
@@ -29,22 +30,21 @@ export default {
 
 
 <style scoped>
-.box-fluid{
-  display:flex;
+.box-fluid {
+  display: flex;
   flex-flow: row wrap;
-  justify-content:center;
+  justify-content: center;
   margin-top: 50px;
-
 }
 .animation {
   display: flex;
   justify-content: flex-start;
-  max-width:900px;
-  min-width:500px;
+  max-width: 900px;
+  min-width: 500px;
   max-height: 300px;
   min-height: 300px;
   position: relative;
-  left:0px;
+  left: 0px;
 }
 .planet {
   position: absolute;
@@ -63,12 +63,11 @@ export default {
   top: 80px;
   -webkit-animation: myOrbit 4s linear forwards; /* Chrome, Safari 5 */
 }
-.planet-result{
-  display:flex;
+.planet-result {
+  display: flex;
   flex-direction: column;
-  max-width:900px;
-  min-width:500px;
-
+  max-width: 900px;
+  min-width: 500px;
 }
 
 @keyframes myOrbit {
