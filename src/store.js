@@ -22,8 +22,20 @@ export default new Vuex.Store({
     chosenGravity: null, //value 1-100
     chosenDays:null, //value 150-1770
     chosenHours: null, //12-40
+    chosenHead: "#049ED6",
+    chosenBody:"#038DBF",
+    chosenEye:"#0586FF"
   },
   getters: {
+    getHead: state => {
+      return state.chosenHead
+    },
+    getBody: state => {
+      return state.chosenBody
+    },
+    getEye: state => {
+      return state.chosenEye
+    },
     // använd array.filter().filter().filter().filter()
     filteredPlanets(state) {
       return state.planets
@@ -76,7 +88,16 @@ export default new Vuex.Store({
     },
     setChosenRotationPeriod : (state, hours) => {
       state.chosenHours= hours;
-    }
+    },
+    setChosenHeadColor : (state, head) => {
+      state.chosenHead= head;
+    },
+    setChosenBodyColor : (state, body) => {
+      state.chosenBody= body;
+    },
+    setChosenEyeColor : (state, eye) => {
+      state.chosenEye= eye;
+    },
   },
   actions: {
     fetchSwapi(store) {
