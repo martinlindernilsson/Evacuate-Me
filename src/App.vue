@@ -1,14 +1,14 @@
 <template>
   <div id="app">
-    <Particles/>
+    <!--<Particles/>-->
     <router-view/>
   </div>
 </template>
 <script>
-import Particles from "@/components/Particles.vue";
+//import Particles from "@/components/Particles.vue";
 export default {
   components: {
-    Particles
+    //Particles
   }
 };
 </script>
@@ -31,7 +31,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
-  padding-top: 5%;
 }
 .router-view {
   width: 100vw;
