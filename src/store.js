@@ -18,7 +18,8 @@ export default new Vuex.Store({
     currentStep: 1,
     planets: [], // all planets fetched from API
     chosenClimate: null,
-    chosenPopulation: null
+    chosenPopulation: null, //value 1-130
+    chosenGravity: null //value 1-100
   },
   getters: {
     // använd array.filter().filter().filter().filter()
@@ -52,7 +53,9 @@ export default new Vuex.Store({
     },
     setChosenPopulation : (state, population) => {
       state.chosenPopulation = population;
-    }
+    },
+    setChosenGravity : (state, gravity) => {
+      state.chosenGravity = gravity;
   },
   actions: {
     fetchSwapi(store) {
