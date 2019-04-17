@@ -41,19 +41,20 @@ export default new Vuex.Store({
         .filter(filteredPlanets => {
           if (state.chosenPopulation) {
             let exists = false;
-            if (state.chosenPopulation < 35) {
-              if (filteredPlanets.population < 1000) {
+            if (state.chosenPopulation < 65) {
+              if (filteredPlanets.population < 100000000 || filteredPlanets.population == "unknown") {
                 exists = true;
               }
-              else {
-                if (filteredPlanets.population > 1000) {
-                  exists = true;
-                }
-              }
+            }else {
+              if (filteredPlanets.population > 100000000 || filteredPlanets.population == "unknown") {
+                exists = true;
+              }       
             }
             return exists;
+          } else {
+            return true;
           }
-        }); // add .filter() for population aso here */
+        }); // add .filter() for gravity also here */
     }
   },
   mutations: {
