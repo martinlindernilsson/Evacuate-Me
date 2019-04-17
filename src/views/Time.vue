@@ -150,15 +150,7 @@ export default {
   background: #f1da36;
   box-shadow: 0 0 50px #f1da36, 0 0 20px #f2ad00, 0 0 5px #c96800,
     0 0 70px #feff8f;
-  background: -webkit-gradient(
-    radial,
-    center center,
-    0px,
-    center center,
-    100%,
-    color-stop(0%, #fcf3a1),
-    color-stop(100%, #f1da36)
-  );
+  
 }
 .sun {
   animation-name: spin;

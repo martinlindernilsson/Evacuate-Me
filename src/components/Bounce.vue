@@ -13,6 +13,7 @@
               color="red"
               max="100"
               min="0"
+              @click="setGravity"
             ></v-slider>
           </v-flex>
           <v-flex>
@@ -45,6 +46,12 @@ export default {
     };
   },
   mounted: function() {}
+  ,
+  methods: {
+    setGravity: function() {
+      this.$store.commit("setChosenGravity", this.slider);
+    }
+  }
 };
 </script>
 
