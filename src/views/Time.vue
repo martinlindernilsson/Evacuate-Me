@@ -8,7 +8,7 @@
           <v-layout row wrap>
             <v-flex>
               <v-slider
-                v-model="DaySlider"
+                v-model="daySlider"
                 ticks="always"
                 tick-size="3"
                 :max="10"
@@ -17,7 +17,7 @@
                 :color="ex1.color"
                 :track-color="ex2.color"
                 :thumb-color="ex3.color"
-                
+                @click="setDays()"
               ></v-slider>
             </v-flex>
           </v-layout>
@@ -25,7 +25,7 @@
           <v-layout row wrap>
             <v-flex>
               <v-slider
-                v-model="HourSlider"
+                v-model="hourSlider"
                 ticks="always"
                 tick-size="3"
                 :max="10"
@@ -34,17 +34,18 @@
                 :color="ex1.color"
                 :track-color="ex2.color"
                 :thumb-color="ex3.color"
+                @click="setHours()"
               ></v-slider>
             </v-flex>
           </v-layout>
         </v-container>
       </v-app>
-      
+
       <!-- https://codepen.io/willpaige/pen/ImjGq -->
       <div class="planet-container">
-        <div :style="{ animationDuration: DaySlider + 's'}" class="planets sun">
+        <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
           <div class="one ring"></div>
-          <div :style="{ animationDuration: HourSlider + 's'}" class="planet">
+          <div :style="{ animationDuration: hourSlider + 's'}" class="planet">
             <div class="ring"></div>
             <div class="moon"></div>
           </div>
@@ -60,8 +61,8 @@ export default {
   name: "Time",
   data() {
     return {
-      DaySlider: 5,
-      HourSlider: 5,
+      daySlider: 5,
+      hourSlider: 5,
       ex1: { label: "color", val: 25, color: "#c91e00" },
       ex2: { label: "track-color", val: 75, color: "#FFFFFF" },
       ex3: { label: "thumb-color", val: 50, color: "#c91e00" }
@@ -70,7 +71,14 @@ export default {
   mounted: function() {
     this.$store.state.currentStep = 4;
   },
-  methods: {}
+  methods: {
+    setDays: function() {
+      this.$store.commit("setChosenOrbitalPeriod", this.daySlider);
+    },
+    setHours: function() {
+      this.$store.commit("setChosenRotationPeriod", this.hourSlider);
+    }
+  }
 };
 </script>
 
@@ -82,9 +90,9 @@ export default {
   justify-content: center;
 }
 
-.container{
-  max-height:150px;
-  max-width:300px;
+.container {
+  max-height: 150px;
+  max-width: 300px;
   margin-top: 40px;
   margin-bottom: 80px;
 }
@@ -150,7 +158,6 @@ export default {
   background: #f1da36;
   box-shadow: 0 0 50px #f1da36, 0 0 20px #f2ad00, 0 0 5px #c96800,
     0 0 70px #feff8f;
-  
 }
 .sun {
   animation-name: spin;
