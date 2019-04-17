@@ -71,8 +71,8 @@ export default {
 
 .ball-planet {
   position: absolute;
-  top: 45%;
-  left: 40%;
+  top: 44%;
+  left: 25%;
 }
 
 .ball {

@@ -48,8 +48,10 @@ export default {
 }
 
 .nextButton {
+  display: inline;
   position: absolute;
-  top: 45em;
+  top: 61%;
+  left: 60%;
 }
 
 .bounce-and-slider {
