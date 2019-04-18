@@ -37,6 +37,7 @@ export default {
   methods: {
     chooseClimate: function(option) {
       this.moon = option
+      this.$store.commit("setPlanetColor", option);
       this.$store.commit("setChosenClimate", option);
     }
   }

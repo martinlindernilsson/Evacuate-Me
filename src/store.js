@@ -12,6 +12,7 @@ export default new Vuex.Store({
     planets: [], // all planets fetched from API
     chosenName: null,
     chosenClimate: null, // chosenClimate is used with climateMapping to filter planets
+    chosenPlanetColor: null,
     chosenPopulation: null, //value 1-130
     chosenGravity: null, //value 1-100
     chosenDays: null, //value 1-10
@@ -138,6 +139,20 @@ export default new Vuex.Store({
     },
     setChosenClimate: (state, payload) => {
       state.chosenClimate = payload;
+    },
+    setPlanetColor: (state, climate) => {
+      if(climate == 'Steamy'){
+        state.chosenPlanetColor = "orange"
+      }
+      else if(climate == "Extreme"){
+        state.chosenPlanetColor = "red"
+      }
+      else if(climate == "Varying"){
+        state.chosenPlanetColor = "green"
+      }
+      else if(climate == "Chilly"){
+        state.chosenPlanetColor = "blue"
+      }
     },
     setChosenPopulation: (state, population) => {
       state.chosenPopulation = population;

@@ -22,7 +22,7 @@
         <v-layout row wrap>
           <v-flex class="xs8">
             <div class="planet">
-              <div class="circle"></div>
+              <div class="circle" :style='"background-color:" + planetColor'></div>
               <div id="people">
                 <div v-for="people in slider" :key="people.id" class="peopleIcon">
                   <i class="fab fa-reddit-alien"></i>
@@ -47,7 +47,8 @@ export default {
   name: "Population",
   data() {
     return {
-      slider: 2
+      slider: 2,
+      planetColor: this.$store.state.chosenPlanetColor
     };
   },
   mounted: function() {
@@ -79,7 +80,6 @@ export default {
 }
 
 .circle {
-  background-color: green;
   width: 300px;
   height: 300px;
   border-radius: 50%;

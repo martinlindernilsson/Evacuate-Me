@@ -6,7 +6,7 @@
       <div class="planet-container">
         <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
           <div class="one ring"></div>
-          <div :style="{ animationDuration: hourSlider + 's'}" class="planet">
+          <div :style="{ animationDuration: hourSlider + 's', background: planetColor}" class="planet">
             <div class="ring"></div>
             <div class="moon"></div>
           </div>
@@ -79,6 +79,7 @@ export default {
     return {
       daySlider: 5,
       hourSlider: 5,
+      planetColor: this.$store.state.chosenPlanetColor,
       ex1: { label: "color", val: 25, color: "#c91e00" },
       ex2: { label: "track-color", val: 75, color: "#FFFFFF" },
       ex3: { label: "thumb-color", val: 50, color: "#c91e00" }

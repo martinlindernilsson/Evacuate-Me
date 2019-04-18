@@ -29,7 +29,7 @@
           </v-flex>
 
           <v-flex class="circle-div">
-            <div class="circle"></div>
+            <div class="circle" :style='"background-color:" + planetColor'></div>
           </v-flex>
         </v-layout>
       </v-container>
@@ -42,7 +42,8 @@ export default {
   name: "Bounce",
   data() {
     return {
-      slider: 45
+      slider: 45,
+      planetColor: this.$store.state.chosenPlanetColor
     };
   },
   mounted: function() {}
@@ -88,7 +89,6 @@ export default {
   border-radius: 50%;
   height: 160px;
   width: 160px;
-  background-color: aquamarine;
   box-shadow: 0 0 30px #ad8766
 }
 
