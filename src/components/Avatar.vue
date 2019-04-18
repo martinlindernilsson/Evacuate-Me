@@ -1,8 +1,8 @@
 <template>
   <v-flex class="avatar" xs12 sm6 md6>
-    <v-avatar class="head" size="180" :color="getHeadColor()">
+    <v-avatar class="head" size="180" :color="head">
       <div class="eyeball">
-        <div class="iris" :style="{ background: getEyeColor() }">
+        <div class="iris" :style="{ background: eye }">
           <div class="pupil"></div>
         </div>
       </div>
@@ -11,31 +11,28 @@
       </div>
     </v-avatar>
     <div class="whole-body">
-      <div class="body" :style="{ background: getBodyColor() }"></div>
-      <div class="l-left" :style="{ background: getBodyColor()}"></div>
-      <div class="l-right" :style="{ background: getBodyColor() }"></div>
-      <div class="a-left" :style="{ background: getBodyColor() }"></div>
-      <div class="a-right" :style="{ background: getBodyColor() }"></div>
+      <div class="body" :style="{ background: body }"></div>
+      <div class="l-left" :style="{ background: body}"></div>
+      <div class="l-right" :style="{ background: body }"></div>
+      <div class="a-left" :style="{ background: body }"></div>
+      <div class="a-right" :style="{ background: body }"></div>
     </div>
   </v-flex>
 </template>
 <script>
+
 export default {
-  data() {
-    return {
-    };
-  },
- methods: {
-  getHeadColor () {
-    return this.$store.getters.getHead
-  },
-  getBodyColor(){
-      return this.$store.getters.getBody
-  },
-  getEyeColor(){
-      return this.$store.getters.getEye
+  computed: {
+    head() {
+      return this.$store.state.chosenHead
+    },
+    eye() {
+      return this.$store.state.chosenEye
+    },
+    body() {
+      return this.$store.state.chosenBody
+    }
   }
-},
 };
 </script>
 
