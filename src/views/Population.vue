@@ -25,7 +25,7 @@
               <div class="circle"></div>
               <div id="people">
                 <div v-for="people in slider" :key="people.id" class="peopleIcon">
-                  <i class="fas fa-user"></i>
+                  <i class="fab fa-reddit-alien"></i>
                 </div>
               </div>
             </div>
