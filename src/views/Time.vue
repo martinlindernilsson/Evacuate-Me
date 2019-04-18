@@ -2,7 +2,7 @@
   <div class="time">
     <div class="infotext">Time is relative...</div>
     <div class="content">
-      <!-- https://codepen.io/willpaige/pen/ImjGq -->
+      <!-- Inspiration from https://codepen.io/willpaige/pen/ImjGq -->
       <div class="planet-container">
         <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
           <div class="one ring"></div>
@@ -17,6 +17,10 @@
         <v-container>
           <v-subheader class="header">Hours a day</v-subheader>
           <v-layout row wrap>
+            <div class="slider-container">
+            <v-flex xs1>
+            <i class="fas fa-minus"></i>
+          </v-flex>
             <v-flex>
               <v-slider
                 v-model="hourSlider"
@@ -31,9 +35,17 @@
                 @click="setHours()"
               ></v-slider>
             </v-flex>
+            <v-flex xs1>
+            <i class="fas fa-plus"></i>
+          </v-flex>
+          </div>
           </v-layout>
           <v-subheader class="header">Days a year</v-subheader>
           <v-layout row wrap>
+            <div class="slider-container">
+            <v-flex xs1>
+            <i class="fas fa-minus"></i>
+          </v-flex>
             <v-flex>
               <v-slider
                 v-model="daySlider"
@@ -48,6 +60,10 @@
                 @click="setDays()"
               ></v-slider>
             </v-flex>
+            <v-flex xs1>
+            <i class="fas fa-plus"></i>
+          </v-flex>
+          </div>
           </v-layout>
           <v-btn class="nextButton" @click="$router.push('/result')">Done</v-btn>
         </v-container>
@@ -88,6 +104,16 @@ export default {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
+}
+
+.slider-container{
+  display: flex;
+  flex-direction: row;
+  align-items:baseline;
+}
+
+.slider-container > *{
+  margin-right: 10px;
 }
 
 .container {
@@ -182,9 +208,7 @@ export default {
   transform-origin: 15px 15px;
   box-shadow: 0 0 20px #eeede5ec, 0 0 5px #bae6ebe3;
 }
-.application--wrap {
-  min-height: 100px !important;
-}
+
 @keyframes spin {
   from {
     transform: rotate(0deg);
