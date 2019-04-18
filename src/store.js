@@ -46,7 +46,7 @@ export default new Vuex.Store({
               if (planet.climate.includes(search)) {
                 exists = true;
               }
-            });
+            });            
             return exists;
           } else {
             return true;
@@ -60,7 +60,7 @@ export default new Vuex.Store({
                 exists = true;
               }
             }else {
-              if (filteredPlanets.population > 100000000 || filteredPlanets.population == "unknown") {
+              if (filteredPlanets.population > 100000000) {
                 exists = true;
               }       
             }
@@ -68,7 +68,38 @@ export default new Vuex.Store({
           } else {
             return true;
           }
-        }); // add .filter() for gravity also here */
+        })
+        .filter(gravityPlanets => {
+          if (state.chosenGravity) {
+            let exists = false;
+            let gravity = gravityPlanets.gravity
+            if (gravity == 'unknown'){
+              exists = true;        
+            } else {
+              gravity = gravityPlanets.gravity.substr(0,gravityPlanets.gravity.indexOf(' '))
+              if (!gravity) {
+                gravity = gravityPlanets.gravity.substr(gravityPlanets.gravity.indexOf(' ')+1);
+              }
+              if (state.chosenGravity < 25){
+                if(gravity < 1){
+                  exists = true;
+                }
+              } else if(state.chosenGravity > 25 && state.chosenGravity < 75){
+                  if(gravity == 1){
+                    exists = true;
+                  }
+              } else {
+                  if(gravity > 1){
+                    exists = true;
+                  }
+              }         
+            }
+            
+            return exists;
+          } else {
+            return true;
+          }
+        }); // add .filter() for time also here */
     }
   },
   mutations: {
