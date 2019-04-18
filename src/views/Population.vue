@@ -20,7 +20,7 @@
           </v-flex>
         </v-layout>
         <v-layout row wrap>
-          <v-flex>
+          <v-flex class="xs8">
             <div class="planet">
               <div class="circle"></div>
               <div id="people">
@@ -29,10 +29,14 @@
                 </div>
               </div>
             </div>
+            
+          </v-flex>
+          <v-flex class="xs4">
+            <v-btn class="nextButton" @click="$router.push('/gravity')">Next</v-btn>
           </v-flex>
         </v-layout>
 
-        <v-btn class="nextButton" @click="$router.push('/gravity')">Next</v-btn>
+        
       </v-container>
     </v-app>
   </div>

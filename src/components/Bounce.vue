@@ -17,7 +17,7 @@
             ></v-slider>
           </v-flex>
           <v-flex>
-            <i class="fas fa-weight-hanging fa-3x"></i>
+            <i class="fas fa-weight-hanging fa-3x bigIcon"></i>
           </v-flex>
         </v-layout>
 
@@ -65,8 +65,8 @@ export default {
 .small-icon {
   position: absolute;
   top: 38px;
-  left: 38px
-
+  left: 38px;
+  z-index: 1;
 }
 
 .ball-planet {
