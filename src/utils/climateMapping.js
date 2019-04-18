@@ -1,6 +1,6 @@
 export default {
-    "steamy":["superheated", "hot", "tropical"],
-    "extreme": ["polluted", "unknown", "arid", "frozen"],
-    "varying": ["temperate"],
-    "chilly": ["artic", "windy", "subartic", "arctic", "frigid", "frozen"]
+    "Steamy":["superheated", "hot", "tropical"],
+    "Extreme": ["polluted", "unknown", "arid", "frozen"],
+    "Varying": ["temperate"],
+    "Chilly": ["artic", "windy", "subartic", "arctic", "frigid", "frozen"]
 }
