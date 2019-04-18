@@ -1,6 +1,6 @@
 <template>
   <div class="results">
-    <div class="info-text">Här visas resultatet...</div>
+    <div class="info-text">The results are in!</div>
     <div class="box-fluid">
       <div class="animation">
         <div class="planet" style="z-index: 1"></div>
@@ -8,13 +8,14 @@
       </div>
       <div class="planet-result">
         <p>You will be evacuated to...</p>
-        <p class="name-of-planet">PLUTO</p>
-        <p class="population">population</p>
-        <p class="Gravity">Gravity</p>
-        <p class="Time">Time</p>
+        <h1 class="name-of-planet"><p>{{planet.name}}</p></h1>
+        <p class="population">Population: {{planet.population}}</p>
+        <p class="gravity">Gravity: {{planet.gravity}}</p>
+        <p class="rotation">Rotaion period: {{planet.rotation_period}} hours</p>
+        <p class="orbital">Orbital period: {{planet.orbital_period}} days</p>
         <Avatar/>
       </div>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -23,8 +24,17 @@ import Avatar from "../components/Avatar";
 export default {
   name: "Result",
   components: { Avatar },
+  data() {
+    return{
+      planet: this.$store.getters.filteredPlanets[0]
+    }  
+  },
   mounted: function() {
-    this.$store.state.currentStep = 5;
+    this.$store.state.currentStep = 5,
+    this.getPlanet
+  },
+  methods: {
+
   }
 };
 </script>
@@ -63,6 +73,7 @@ export default {
   left: 240px;
   top: 80px;
   -webkit-animation: myOrbit 4s linear forwards; /* Chrome, Safari 5 */
+  animation: myOrbit 4s linear forwards;
 }
 .planet-result {
   display: flex;
