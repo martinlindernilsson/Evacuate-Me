@@ -39,5 +39,9 @@ body {
   left: 0;
   position: absolute;
 }
+.infotext {
+  color: #c91e00;
+  font-size: 16pt;
+}
 
 </style>

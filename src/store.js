@@ -4,19 +4,13 @@ import climateMapping from "./utils/climateMapping";
 
 Vue.use(Vuex);
 
-// const climateMapping = {
-//   steamy: ["hot", "tropical"],
-//   extreme: ["superheated", "polluted", "unknown"],
-//   varying: ["temperate"],
-//   chilly: ["artic", "windy", "subartic"]
-// };
-
 const url = "https://swapi.co/api/planets/?page=";
 
 export default new Vuex.Store({
   state: {
     currentStep: 1,
     planets: [], // all planets fetched from API
+    chosenName: null,
     chosenClimate: null, // chosenClimate is used with climateMapping to filter planets
     chosenPopulation: null, //value 1-130
     chosenGravity: null, //value 1-100
@@ -27,6 +21,9 @@ export default new Vuex.Store({
     chosenEye:"#0586FF"
   },
   getters: {
+    getName: state => {
+      return state.chosenName
+    },
     getHead: state => {
       return state.chosenHead
     },
@@ -145,6 +142,9 @@ export default new Vuex.Store({
   mutations: {
     setPlanets(state, planets) {
       state.planets = planets;
+    },
+    setChosenName: (state, name) => {
+      state.chosenName = name
     },
     setChosenClimate: (state, payload) => {
       state.chosenClimate = payload;

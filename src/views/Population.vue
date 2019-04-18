@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="infotext">
-      <h2>Neighbours</h2>Are you a social person or a lone wolf?
+      Neighbours. <br>Are you a social person or a lone wolf?
     </div>
     <v-app id="population">
       <v-container grid-list-lg>

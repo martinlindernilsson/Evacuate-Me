@@ -42,11 +42,6 @@ export default {
   justify-content: center;
 }
 
-.infotext {
-  color: #c91e00;
-  font-size: 16pt;
-}
-
 .nextButton {
   display: inline;
   position: absolute;

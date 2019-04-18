@@ -1,13 +1,13 @@
 <template>
   <div class="results">
-    <div class="info-text">The results are in!</div>
+    <div class="infotext">The results are in!</div>
     <div class="box-fluid">
       <div class="animation">
         <div class="planet" style="z-index: 1"></div>
         <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
       </div>
       <div class="planet-result">
-        <p>You will be evacuated to...</p>
+        <p>{{userName}}, <br>you will be evacuated to the planet...</p>
         <h1 class="name-of-planet"><p>{{planet.name}}</p></h1>
         <p class="population">Population: {{planet.population}}</p>
         <p class="gravity">Gravity: {{planet.gravity}}</p>
@@ -26,12 +26,12 @@ export default {
   components: { Avatar },
   data() {
     return{
+      userName: this.$store.getters.getName,
       planet: this.$store.getters.filteredPlanets[0]
     }  
   },
   mounted: function() {
-    this.$store.state.currentStep = 5,
-    this.getPlanet
+    this.$store.state.currentStep = 5
   },
   methods: {
 
@@ -80,6 +80,10 @@ export default {
   flex-direction: column;
   max-width: 900px;
   min-width: 500px;
+}
+.infotext {
+  color: #c91e00;
+  font-size: 16pt;
 }
 
 @keyframes myOrbit {
