@@ -145,7 +145,7 @@ export default {
   width: 540px;
   margin-top: 70px;
   text-align: center;
-  height: 600px;
+  height: 450px;
 }
 .sun {
   width: 80px;
@@ -181,6 +181,9 @@ export default {
   left: -30px;
   transform-origin: 15px 15px;
   box-shadow: 0 0 20px #eeede5ec, 0 0 5px #bae6ebe3;
+}
+.application--wrap{
+  min-height: 100px !important;
 }
 @keyframes spin {
   from {
