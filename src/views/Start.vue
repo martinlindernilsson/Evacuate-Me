@@ -3,7 +3,6 @@
     <v-btn fab large color="#c91e00" class="evacuate-button" @click="$router.push({ name: 'createavatar' })">
       EVACUATE ME
     </v-btn>
-    <!-- Change the text to your liking -->
     <div class="board">
       <div class="content">
         <p class="title">Episode I</p>
