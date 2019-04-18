@@ -3,7 +3,7 @@
     <div class="infotext">The results are in!</div>
     <div class="box-fluid">
       <div class="animation">
-        <div class="planet" style="z-index: 1"></div>
+        <div class="planet" :style="{background: planetColor}"></div>
         <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
       </div>
       <div class="planet-result">
@@ -72,6 +72,7 @@ export default {
   data() {
     return {
       planet: this.$store.getters.filteredPlanets[0],
+      planetColor: this.$store.state.chosenPlanetColor,
       newUser: {
           name: this.$store.state.chosenName,
           planet: this.$store.getters.filteredPlanets[0].name,
@@ -129,6 +130,7 @@ export default {
   left: 200px;
   top: 90px;
   box-shadow: 0 0 30px #3a72d3;
+  z-index: 1;
 }
 .rocket {
   position: absolute;
