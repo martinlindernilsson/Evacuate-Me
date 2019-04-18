@@ -29,10 +29,9 @@ After that you will choose how populated you want your planet to be by dragging 
   - Completed all screens with interactive ways to choose preferences about the planet
   - API calls
   - Set up hosting on firebase, https://evacuate-me-d8a07.firebaseapp.com
+  - Connect the users input (name and avatar) with a data base 
 
- 
-# What we still plan to do
-- Connect the users input (name and avatar) with a data base 
+
 
 ## Project setup
 ```
