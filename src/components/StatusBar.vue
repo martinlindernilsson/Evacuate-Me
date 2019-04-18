@@ -7,10 +7,8 @@
           <v-stepper-step
             :key="`${n}-step`"
             color="#c91e00"
-            :editable="n < $store.state.currentStep"
             :complete="n < $store.state.currentStep"
             :step="n"
-            @click="stepClicked(n)"
           >{{stepName[n-1]}}</v-stepper-step>
           <template v-if="n != stepName.length">
             <v-divider :key="`${n}-divider`"></v-divider>
@@ -26,14 +24,7 @@ export default {
   data: () => ({
     stepName: ["Climate", "Population", "Gravity", "Time", "Fly away"],
     paths: ["/climate", "/population", "/gravity", "/time", "/result"]
-  }),
-  methods: {
-    stepClicked: function(stepNr) {
-      if (stepNr <= this.$store.state.currentStep) {
-        this.$router.push(this.paths[stepNr - 1]);
-      }
-    }
-  }
+  })
 };
 </script>
 
