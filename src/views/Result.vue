@@ -20,19 +20,66 @@
         <p class="orbital">Orbital period: {{planet.orbital_period}} days</p>
         <Avatar/>
       </div>
+      <v-btn fab large color="#c91e00" class="confirmButton" @click="addUser">
+        Confirm
+        <br>destination
+      </v-btn>
+      <div class=previousUsers>Previous Evacuees
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Planet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in users" :key="user">
+              <td>{{user.name}}</td>
+              <td>{{user.planet}}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import Avatar from "../components/Avatar";
+import Firebase from 'firebase'
+
+ let config = {
+        apiKey: "AIzaSyCZRoljnhpNIYgJXQ5zLeyxVVkTxt8ziII",
+        authDomain: "evacuate-me-d8a07.firebaseapp.com",
+        databaseURL: "https://evacuate-me-d8a07.firebaseio.com",
+        projectId: "evacuate-me-d8a07",
+        storageBucket: "evacuate-me-d8a07.appspot.com",
+        messagingSenderId: "715639153462"
+      };
+      let app = Firebase.initializeApp(config);
+      let db = app.database()
+
+      let usersRef = db.ref('users')
+      
 export default {
   name: "Result",
+  firebase: {
+    users: usersRef
+  },
   components: { Avatar },
+  
   data() {
     return {
       planet: this.$store.getters.filteredPlanets[0],
-      planetColor: this.$store.state.chosenPlanetColor
+      planetColor: this.$store.state.chosenPlanetColor,
+      newUser: {
+          name: this.$store.state.chosenName,
+          planet: this.$store.getters.filteredPlanets[0].name,
+          headColor: this.$store.state.chosenHead,
+          bodyColor: this.$store.state.chosenBody,
+          eyeColor: this.$store.state.chosenEye
+      },
     };
   },
   computed: {
@@ -43,7 +90,16 @@ export default {
   mounted: function() {
     this.$store.state.currentStep = 5;
   },
-  methods: {}
+  methods: {
+    addUser: function () {
+        usersRef.push(this.newUser);
+        this.newUser.name = '';
+        this.newUser.planet = '';
+        this.newUser.headColor = '';
+        this.newUser.bodyColor = '';
+        this.newUser.eyeColor = '';
+    }
+  }
 };
 </script>
 
@@ -109,5 +165,27 @@ export default {
     top: 125px;
     left: 280px;
   }
+}
+
+.v-btn{
+  min-width: 140px;
+  min-height: 140px;
+  z-index: 100;
+}
+.confirmButton {
+  background-color: aquamarine;
+  font-family: "Roboto Mono", monospace;
+  font-size: 1em;
+  letter-spacing: 3px;
+  height: 40px;
+  
+  color: #fff;
+  border: none;
+}
+.previousUsers {
+  position: absolute;
+  right: 12%;
+  top: 60%;
+  
 }
 </style>
