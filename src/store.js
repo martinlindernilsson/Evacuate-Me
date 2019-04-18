@@ -37,6 +37,9 @@ export default new Vuex.Store({
     filteredPlanets(state) {
       let planets = state.planets
         .filter(planet => {
+          if(planet.name == "unknown"){
+            return false
+          }
           if (state.chosenClimate) {
             let exists = false;
             climateMapping[state.chosenClimate].forEach(search => {
