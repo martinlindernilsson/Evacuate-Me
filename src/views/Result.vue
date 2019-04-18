@@ -24,6 +24,23 @@
         Confirm
         <br>destination
       </v-btn>
+      <div class=previousUsers>Previous Evacuees
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Planet</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="user in users" :key="user">
+              <td>{{user.name}}</td>
+              <td>{{user.planet}}</td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </template>
@@ -44,9 +61,12 @@ import Firebase from 'firebase'
       let db = app.database()
 
       let usersRef = db.ref('users')
-
+      
 export default {
   name: "Result",
+  firebase: {
+    users: usersRef
+  },
   components: { Avatar },
   
   data() {
@@ -159,5 +179,11 @@ export default {
   
   color: #fff;
   border: none;
+}
+.previousUsers {
+  position: absolute;
+  right: 12%;
+  top: 60%;
+  
 }
 </style>
