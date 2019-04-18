@@ -1,12 +1,12 @@
 <template>
   <div>
     <v-app class="app">
-      <v-container fluid>
-        <v-layout justify-center>
-          <v-flex xs1>
-            <i class="fas fa-weight-hanging fa-md small-icon"></i>
+      <v-container grid-list-lg>
+        <v-layout row wrap>
+          <v-flex class="xs1 big-icon">
+            <i class="fas fa-weight-hanging fa-3x"></i>
           </v-flex>
-          <v-flex xs9>
+          <v-flex class="xs9">
             <v-slider
               v-model="slider"
               dark
@@ -16,8 +16,8 @@
               @click="setGravity"
             ></v-slider>
           </v-flex>
-          <v-flex>
-            <i class="fas fa-weight-hanging fa-3x bigIcon"></i>
+          <v-flex class="xs2 small-icon">
+            <i class="fas fa-weight-hanging fa-md"></i>
           </v-flex>
         </v-layout>
 
@@ -61,12 +61,15 @@ export default {
 .app {
   position: absolute;
   background: transparent;
+  margin: 20px;
 }
 
 .small-icon {
-  position: absolute;
-  top: 38px;
-  left: 38px;
+  margin-top: 20px;
+  text-align: left;
+}
+.big-icon{
+  text-align: right;
   z-index: 1;
 }
 
