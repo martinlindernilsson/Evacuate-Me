@@ -2,7 +2,7 @@
   <div class="time">
     <div class="infotext">Time is relative...</div>
     <div class="content">
-       <!-- https://codepen.io/willpaige/pen/ImjGq -->
+      <!-- https://codepen.io/willpaige/pen/ImjGq -->
       <div class="planet-container">
         <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
           <div class="one ring"></div>
@@ -48,12 +48,11 @@
                 @click="setDays()"
               ></v-slider>
             </v-flex>
-
           </v-layout>
           <v-btn class="nextButton" @click="$router.push('/result')">Done</v-btn>
         </v-container>
       </v-app>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -183,7 +182,7 @@ export default {
   transform-origin: 15px 15px;
   box-shadow: 0 0 20px #eeede5ec, 0 0 5px #bae6ebe3;
 }
-.application--wrap{
+.application--wrap {
   min-height: 100px !important;
 }
 @keyframes spin {
