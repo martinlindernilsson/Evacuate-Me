@@ -20,8 +20,8 @@ export default new Vuex.Store({
     chosenClimate: null, // chosenClimate is used with climateMapping to filter planets
     chosenPopulation: null, //value 1-130
     chosenGravity: null, //value 1-100
-    chosenDays:null, //value 150-1770
-    chosenHours: null, //12-40
+    chosenDays: null, //value 1-10
+    chosenHours: null, //1-10
     chosenHead: "#049ED6",
     chosenBody:"#038DBF",
     chosenEye:"#0586FF"
@@ -38,7 +38,7 @@ export default new Vuex.Store({
     },
     // använd array.filter().filter().filter().filter()
     filteredPlanets(state) {
-      return state.planets
+      let planets = state.planets
         .filter(planet => {
           if (state.chosenClimate) {
             let exists = false;
@@ -93,13 +93,53 @@ export default new Vuex.Store({
                     exists = true;
                   }
               }         
-            }
-            
+            }      
             return exists;
           } else {
             return true;
           }
-        }); // add .filter() for time also here */
+        })
+        
+        let timePlanets = planets
+        .filter(planets =>{
+          if(state.chosenDays){
+            let exists = false;
+            if(state.chosenDays < 5){
+              if(planets.orbital_period < 351){
+                exists = true;
+              }
+            } else{
+              if(planets.orbital_period > 350){
+                exists = true;
+              }
+            }
+            return exists;
+          }else {
+            return true;
+          }      
+        }).filter(planets =>{
+          if(state.chosenHours){
+            let exists = false;
+            if(state.chosenHours < 5){
+              if(planets.rotation_period < 25) {
+                exists = true
+              } 
+            }else {
+              if(planets.rotation_period > 24) {
+                exists = true
+              }
+            }
+            return exists;
+          }else {
+            return true;
+          }
+        }); 
+
+        if(timePlanets.length == 0){
+          return planets
+        } else {
+          return timePlanets
+        }
     }
   },
   mutations: {
