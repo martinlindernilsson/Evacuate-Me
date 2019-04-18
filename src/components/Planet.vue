@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn fab large :color='setColor(data)' class="planet"/>
+    <v-btn fab large :color='setPlanetColor(data)' class="planet"/>
   </div>
 </template>
 
@@ -8,12 +8,17 @@
 <script>
 export default {
   name: "Planet",
-  props: ["data"], //TODO use state instead
+  props: {
+    data: {
+      type: String,
+      default: ""
+    }
+  },
   data: () => ({
-    climates: { tropical: "orange", frozen: "blue", jungles: "green" }
+    climates: { Steamy: "orange", Extreme: "red", Varying: "green", Chilly: "blue" }
   }),
   methods: {
-    setColor: function(data) {
+    setPlanetColor: function(data) {
       for (let key in this.climates) {
         if (data === key) {
           return this.climates[key];
