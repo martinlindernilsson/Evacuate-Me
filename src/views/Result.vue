@@ -7,15 +7,20 @@
         <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
       </div>
       <div class="planet-result">
-        <p>{{userName}}, <br>you will be evacuated to the planet...</p>
-        <h1 class="name-of-planet"><p>{{planet.name}}</p></h1>
+        <p>
+          {{name}},
+          <br>you will be evacuated to the planet...
+        </p>
+        <h1 class="name-of-planet">
+          <p>{{planet.name}}</p>
+        </h1>
         <p class="population">Population: {{planet.population}}</p>
         <p class="gravity">Gravity: {{planet.gravity}}</p>
         <p class="rotation">Rotaion period: {{planet.rotation_period}} hours</p>
         <p class="orbital">Orbital period: {{planet.orbital_period}} days</p>
         <Avatar/>
       </div>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -25,17 +30,19 @@ export default {
   name: "Result",
   components: { Avatar },
   data() {
-    return{
-      userName: this.$store.getters.getName,
+    return {
       planet: this.$store.getters.filteredPlanets[0]
-    }  
+    };
+  },
+  computed: {
+    name() {
+      return this.$store.state.chosenName;
+    }
   },
   mounted: function() {
-    this.$store.state.currentStep = 5
+    this.$store.state.currentStep = 5;
   },
-  methods: {
-
-  }
+  methods: {}
 };
 </script>
 

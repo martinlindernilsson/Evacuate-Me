@@ -21,19 +21,6 @@ export default new Vuex.Store({
     chosenEye:"#0586FF"
   },
   getters: {
-    getName: state => {
-      return state.chosenName
-    },
-    getHead: state => {
-      return state.chosenHead
-    },
-    getBody: state => {
-      return state.chosenBody
-    },
-    getEye: state => {
-      return state.chosenEye
-    },
-    // använd array.filter().filter().filter().filter()
     filteredPlanets(state) {
       let planets = state.planets
         .filter(planet => {
