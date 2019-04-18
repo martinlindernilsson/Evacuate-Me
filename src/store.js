@@ -12,7 +12,7 @@ export default new Vuex.Store({
     planets: [], // all planets fetched from API
     chosenName: null,
     chosenClimate: null, // chosenClimate is used with climateMapping to filter planets
-    chosenPlanetColor: null,
+    chosenPlanetColor: "orange",
     chosenPopulation: null, //value 1-130
     chosenGravity: null, //value 1-100
     chosenDays: null, //value 1-10

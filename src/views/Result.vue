@@ -24,7 +24,7 @@
         Confirm
         <br>destination
       </v-btn>
-      <div class=previousUsers>Previous Evacuees
+      <div class="previousUsers">Previous Evacuees
       <table class="table table-striped">
           <thead>
             <tr>
@@ -98,6 +98,7 @@ export default {
         this.newUser.headColor = '';
         this.newUser.bodyColor = '';
         this.newUser.eyeColor = '';
+        this.$router.push('/')
     }
   }
 };
@@ -184,8 +185,8 @@ export default {
 }
 .previousUsers {
   position: absolute;
-  right: 12%;
-  top: 60%;
+  left: 15%;
+  top: 80%;
   
 }
 </style>
