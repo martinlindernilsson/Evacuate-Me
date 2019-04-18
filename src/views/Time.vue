@@ -2,6 +2,17 @@
   <div class="time">
     <div class="infotext">Time is relative...</div>
     <div class="content">
+       <!-- https://codepen.io/willpaige/pen/ImjGq -->
+      <div class="planet-container">
+        <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
+          <div class="one ring"></div>
+          <div :style="{ animationDuration: hourSlider + 's'}" class="planet">
+            <div class="ring"></div>
+            <div class="moon"></div>
+          </div>
+        </div>
+      </div>
+
       <v-app id="slider">
         <v-container>
           <v-subheader class="header">Hours a day</v-subheader>
@@ -37,22 +48,12 @@
                 @click="setDays()"
               ></v-slider>
             </v-flex>
+
           </v-layout>
+          <v-btn class="nextButton" @click="$router.push('/result')">Done</v-btn>
         </v-container>
       </v-app>
-
-      <!-- https://codepen.io/willpaige/pen/ImjGq -->
-      <div class="planet-container">
-        <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
-          <div class="one ring"></div>
-          <div :style="{ animationDuration: hourSlider + 's'}" class="planet">
-            <div class="ring"></div>
-            <div class="moon"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <v-btn class="nextButton" @click="$router.push('/result')">Done</v-btn>
+    </div> 
   </div>
 </template>
 

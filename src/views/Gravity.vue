@@ -1,14 +1,10 @@
 <template>
   <div>
     <v-app class="app">
+      <p class="infotext">
+        Gravity.<br>How do you feel about the weight of yourself and everything around you.
+      </p>
       <v-container fluid>
-        <v-layout justify-center>
-          <p class="infotext">
-            Gravity.
-            <br>How do you feel about the weight of yourself and everything around you.
-          </p>
-        </v-layout>
-
         <v-layout align-center class="bounce-and-slider">
           <v-flex>
             <Bounce/>
@@ -42,16 +38,11 @@ export default {
   justify-content: center;
 }
 
-.infotext {
-  color: #c91e00;
-  font-size: 16pt;
-}
-
 .nextButton {
   display: inline;
   position: absolute;
-  top: 61%;
-  left: 60%;
+  top: 25%;
+  left: 70%;
 }
 
 .bounce-and-slider {

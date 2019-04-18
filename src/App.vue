@@ -31,6 +31,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
+  padding-top: 1%;
 }
 .router-view {
   width: 100vw;
@@ -38,6 +39,10 @@ body {
   top: 0;
   left: 0;
   position: absolute;
+}
+.infotext {
+  color: #c91e00;
+  font-size: 16pt;
 }
 
 </style>

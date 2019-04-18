@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="infotext">
-      <h2>Neighbours</h2>Are you a social person or a lone wolf?
+      Neighbours. <br>Are you a social person or a lone wolf?
     </div>
     <v-app id="population">
       <v-container grid-list-lg>
@@ -20,19 +20,23 @@
           </v-flex>
         </v-layout>
         <v-layout row wrap>
-          <v-flex>
+          <v-flex class="xs8">
             <div class="planet">
               <div class="circle"></div>
               <div id="people">
                 <div v-for="people in slider" :key="people.id" class="peopleIcon">
-                  <i class="fas fa-user"></i>
+                  <i class="fab fa-reddit-alien"></i>
                 </div>
               </div>
             </div>
+            
+          </v-flex>
+          <v-flex class="xs4">
+            <v-btn class="nextButton" @click="$router.push('/gravity')">Next</v-btn>
           </v-flex>
         </v-layout>
 
-        <v-btn class="nextButton" @click="$router.push('/gravity')">Next</v-btn>
+        
       </v-container>
     </v-app>
   </div>
