@@ -6,7 +6,10 @@
       <div class="planet-container">
         <div :style="{ animationDuration: daySlider + 's'}" class="planets sun">
           <div class="one ring"></div>
-          <div :style="{ animationDuration: hourSlider + 's', background: planetColor}" class="planet">
+          <div
+            :style="{ animationDuration: hourSlider + 's', background: planetColor}"
+            class="planet"
+          >
             <div class="ring"></div>
             <div class="moon"></div>
           </div>
@@ -18,52 +21,52 @@
           <v-subheader class="header">Hours a day</v-subheader>
           <v-layout row wrap>
             <div class="slider-container">
-            <v-flex xs1>
-            <i class="fas fa-minus"></i>
-          </v-flex>
-            <v-flex>
-              <v-slider
-                v-model="hourSlider"
-                ticks="always"
-                tick-size="3"
-                :max="10"
-                :min="1"
-                :step="1"
-                :color="ex1.color"
-                :track-color="ex2.color"
-                :thumb-color="ex3.color"
-                @click="setHours()"
-              ></v-slider>
-            </v-flex>
-            <v-flex xs1>
-            <i class="fas fa-plus"></i>
-          </v-flex>
-          </div>
+              <v-flex xs1>
+                <i class="fas fa-minus"></i>
+              </v-flex>
+              <v-flex>
+                <v-slider
+                  v-model="hourSlider"
+                  ticks="always"
+                  tick-size="3"
+                  :max="10"
+                  :min="1"
+                  :step="1"
+                  :color="ex1.color"
+                  :track-color="ex2.color"
+                  :thumb-color="ex3.color"
+                  @click="setHours()"
+                ></v-slider>
+              </v-flex>
+              <v-flex xs1>
+                <i class="fas fa-plus"></i>
+              </v-flex>
+            </div>
           </v-layout>
           <v-subheader class="header">Days a year</v-subheader>
           <v-layout row wrap>
             <div class="slider-container">
-            <v-flex xs1>
-            <i class="fas fa-minus"></i>
-          </v-flex>
-            <v-flex>
-              <v-slider
-                v-model="daySlider"
-                ticks="always"
-                tick-size="3"
-                :max="10"
-                :min="1"
-                :step="1"
-                :color="ex1.color"
-                :track-color="ex2.color"
-                :thumb-color="ex3.color"
-                @click="setDays()"
-              ></v-slider>
-            </v-flex>
-            <v-flex xs1>
-            <i class="fas fa-plus"></i>
-          </v-flex>
-          </div>
+              <v-flex xs1>
+                <i class="fas fa-minus"></i>
+              </v-flex>
+              <v-flex>
+                <v-slider
+                  v-model="daySlider"
+                  ticks="always"
+                  tick-size="3"
+                  :max="10"
+                  :min="1"
+                  :step="1"
+                  :color="ex1.color"
+                  :track-color="ex2.color"
+                  :thumb-color="ex3.color"
+                  @click="setDays()"
+                ></v-slider>
+              </v-flex>
+              <v-flex xs1>
+                <i class="fas fa-plus"></i>
+              </v-flex>
+            </div>
           </v-layout>
           <v-btn class="nextButton" @click="$router.push('/result')">Done</v-btn>
         </v-container>
@@ -107,13 +110,13 @@ export default {
   justify-content: center;
 }
 
-.slider-container{
+.slider-container {
   display: flex;
   flex-direction: row;
-  align-items:baseline;
+  align-items: baseline;
 }
 
-.slider-container > *{
+.slider-container > * {
   margin-right: 10px;
 }
 
