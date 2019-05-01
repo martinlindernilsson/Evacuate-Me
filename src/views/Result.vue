@@ -37,9 +37,9 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(user, index) in users.reverse()" :key="user">
-            <td v-if="index < 19">{{user.name}}</td>
-            <td v-if="index < 19">{{user.planet}}</td>
+          <tr v-for="index in 18" :key="index.id">
+            <td v-if="users.length - index - 1 > 0">{{users[users.length - index -1].name}}</td>
+            <td v-if="users.length - index - 1 > 0">{{users[users.length - index -1].planet}}</td>
           </tr>
         </tbody>
       </table>
@@ -63,7 +63,6 @@ let app = Firebase.initializeApp(config);
 let db = app.database();
 
 let usersRef = db.ref("users");
-
 export default {
   name: "Result",
   firebase: {
