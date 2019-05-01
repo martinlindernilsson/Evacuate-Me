@@ -1,85 +1,87 @@
 <template>
-  <div class="results">
-    <div class="infotext">The results are in!</div>
-    <div class="box-fluid">
-      <div class="animation">
-        <div class="planet" :style="{background: planetColor}"></div>
-        <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
-      </div>
-      <div class="planet-result">
-        <p>
-          {{name}},
-          <br>you will be evacuated to the planet...
-        </p>
-        <h1 class="name-of-planet">
-          <p>{{planet.name}}</p>
-        </h1>
-        <p class="population">Population: {{planet.population}}</p>
-        <p class="gravity">Gravity: {{planet.gravity}}</p>
-        <p class="rotation">Rotaion period: {{planet.rotation_period}} hours</p>
-        <p class="orbital">Orbital period: {{planet.orbital_period}} days</p>
-        <Avatar/>
-      </div>
+  <div class="box-fluid">
+    <div class="animation">
+      <div class="planet" :style="{background: planetColor}"></div>
+      <img class="rocket" src="../assets/rocket.png" style="z-index: 0;">
+    </div>
+    <div class="avatar">
+      <Avatar/>
+    </div>
+    <div class="planet-result">
+      <div class="infotext">The results are in!</div>
+      <p>
+        {{name}},
+        <br>you will be evacuated to the planet...
+      </p>
+      <h1 class="name-of-planet">
+        <p :style="{color: planetColor}">{{planet.name}}</p>
+      </h1>
+      <p class="population">Population: {{planet.population}}</p>
+      <p class="gravity">Gravity: {{planet.gravity}}</p>
+      <p class="rotation">Rotaion period: {{planet.rotation_period}} hours</p>
+      <p class="orbital">Orbital period: {{planet.orbital_period}} days</p>
+      <br>
       <v-btn fab large color="#c91e00" class="confirmButton" @click="addUser">
         Confirm
         <br>destination
       </v-btn>
-      <div class="previousUsers">Previous Evacuees
+    </div>
+    <div class="previousUsers">
+      <div class="infotext">Previous Evacuees</div>
+
       <table class="table table-striped">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Planet</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="user in users" :key="user">
-              <td>{{user.name}}</td>
-              <td>{{user.planet}}</td>
-              
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Planet</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(user, index) in users.reverse()" :key="user">
+            <td v-if="index < 19">{{user.name}}</td>
+            <td v-if="index < 19">{{user.planet}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </template>
 
 <script>
 import Avatar from "../components/Avatar";
-import Firebase from 'firebase'
+import Firebase from "firebase";
 
- let config = {
-        apiKey: "AIzaSyCZRoljnhpNIYgJXQ5zLeyxVVkTxt8ziII",
-        authDomain: "evacuate-me-d8a07.firebaseapp.com",
-        databaseURL: "https://evacuate-me-d8a07.firebaseio.com",
-        projectId: "evacuate-me-d8a07",
-        storageBucket: "evacuate-me-d8a07.appspot.com",
-        messagingSenderId: "715639153462"
-      };
-      let app = Firebase.initializeApp(config);
-      let db = app.database()
+let config = {
+  apiKey: "AIzaSyCZRoljnhpNIYgJXQ5zLeyxVVkTxt8ziII",
+  authDomain: "evacuate-me-d8a07.firebaseapp.com",
+  databaseURL: "https://evacuate-me-d8a07.firebaseio.com",
+  projectId: "evacuate-me-d8a07",
+  storageBucket: "evacuate-me-d8a07.appspot.com",
+  messagingSenderId: "715639153462"
+};
+let app = Firebase.initializeApp(config);
+let db = app.database();
 
-      let usersRef = db.ref('users')
-      
+let usersRef = db.ref("users");
+
 export default {
   name: "Result",
   firebase: {
     users: usersRef
   },
   components: { Avatar },
-  
+
   data() {
     return {
       planet: this.$store.getters.filteredPlanets[0],
       planetColor: this.$store.state.chosenPlanetColor,
       newUser: {
-          name: this.$store.state.chosenName,
-          planet: this.$store.getters.filteredPlanets[0].name,
-          headColor: this.$store.state.chosenHead,
-          bodyColor: this.$store.state.chosenBody,
-          eyeColor: this.$store.state.chosenEye
-      },
+        name: this.$store.state.chosenName,
+        planet: this.$store.getters.filteredPlanets[0].name,
+        headColor: this.$store.state.chosenHead,
+        bodyColor: this.$store.state.chosenBody,
+        eyeColor: this.$store.state.chosenEye
+      }
     };
   },
   computed: {
@@ -91,14 +93,14 @@ export default {
     this.$store.state.currentStep = 5;
   },
   methods: {
-    addUser: function () {
-        usersRef.push(this.newUser);
-        this.newUser.name = '';
-        this.newUser.planet = '';
-        this.newUser.headColor = '';
-        this.newUser.bodyColor = '';
-        this.newUser.eyeColor = '';
-        this.$router.push('/')
+    addUser: function() {
+      usersRef.push(this.newUser);
+      this.newUser.name = "";
+      this.newUser.planet = "";
+      this.newUser.headColor = "";
+      this.newUser.bodyColor = "";
+      this.newUser.eyeColor = "";
+      this.$router.push("/");
     }
   }
 };
@@ -113,10 +115,10 @@ export default {
   margin-top: 50px;
 }
 .animation {
-  display: flex;
+  display: block;
   justify-content: flex-start;
   max-width: 900px;
-  min-width: 500px;
+  min-width: 390px;
   max-height: 300px;
   min-height: 300px;
   position: relative;
@@ -141,11 +143,17 @@ export default {
   -webkit-animation: myOrbit 4s linear forwards; /* Chrome, Safari 5 */
   animation: myOrbit 4s linear forwards;
 }
+.avatar {
+  position: absolute;
+  top: 250px;
+  left: 0;
+}
 .planet-result {
-  display: flex;
+  display: block;
   flex-direction: column;
   max-width: 900px;
   min-width: 500px;
+  justify-content: center;
 }
 .infotext {
   color: #c91e00;
@@ -168,7 +176,7 @@ export default {
   }
 }
 
-.v-btn{
+.v-btn {
   min-width: 140px;
   min-height: 140px;
   z-index: 100;
@@ -179,14 +187,11 @@ export default {
   font-size: 1em;
   letter-spacing: 3px;
   height: 40px;
-  
+
   color: #fff;
   border: none;
 }
 .previousUsers {
-  position: absolute;
-  left: 15%;
-  top: 80%;
-  
+  display: block;
 }
 </style>
